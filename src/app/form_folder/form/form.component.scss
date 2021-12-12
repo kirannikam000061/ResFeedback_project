@@ -32,6 +32,18 @@
 .m4{
     margin: 40px;
 }
+.mt-1{
+    margin-top: 10px;
+}
+.mt-2{
+    margin-top: 20px;
+}
+.mb-1{
+    margin-bottom: 10px;
+}
+.mb-2{
+    margin-bottom: 20px;
+}
 .fnt-18{
     font-size: 18px;
 }
@@ -49,4 +61,8 @@
 }
 .width-100{
     width: 100%;
+}
+.restoImage{
+    max-height: 200px;
+    max-width: 200px;
 }

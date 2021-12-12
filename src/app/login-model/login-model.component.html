@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Login User</h1>
+<div mat-dialog-content>
+    <div fxLayout="row wrap">
+        <div fxFlex="100">
+            <mat-form-field appearance="outline" class="width-100">
+                <mat-label>User Name</mat-label>
+                <input type="text" matInput >
+              </mat-form-field>
+        </div>
+        <div fxFlex="100">
+            <mat-form-field appearance="outline" class="width-100">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput >
+              </mat-form-field>
+        </div>
+    </div>
+  <p class="mt-1 mb-2"><a href="">SignUp now</a></p>
+</div>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button color="primary"  (click)="onNoClick()">Submit</button>
+</div>

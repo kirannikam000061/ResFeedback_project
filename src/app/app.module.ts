@@ -36,6 +36,8 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LoginModelComponent } from './login-model/login-model.component';
+import { FeedbackModelComponent } from './feedback-model/feedback-model.component';
 
 
 
@@ -44,6 +46,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   declarations: [
     AppComponent,
     FormComponent,
+    LoginModelComponent,
+    FeedbackModelComponent,
     // NgForm
   ],
   imports: [
@@ -81,7 +85,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
   
   ],
-
+  entryComponents: [LoginModelComponent,FeedbackModelComponent],
   exports: [
   ],
   providers: [],
