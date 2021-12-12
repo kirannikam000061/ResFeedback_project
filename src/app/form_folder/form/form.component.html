@@ -1,1 +1,215 @@
-wdwdc wdwdwdwd 232323
+<mat-toolbar class="navLogo" color="primary">
+        <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+    
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <span>Login</span>
+    </button>
+</mat-toolbar>
+    <mat-card class="m2 p2">
+        <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide><img src="../../../assets/images/image11.jpg" alt=""></ng-template>  
+        <ng-template carouselSlide><img src="../../../assets/images/image11.jpg" alt=""></ng-template>  
+        <ng-template carouselSlide><img src="../../../assets/images/image11.jpg" alt=""></ng-template>  
+        <ng-template carouselSlide><img src="../../../assets/images/Screenshot_3.png" alt=""></ng-template>  
+        <ng-template carouselSlide><img src="../../../assets/images/Screenshot_3.png" alt=""></ng-template>  
+        <ng-template carouselSlide><img src="../../../assets/images/Screenshot_3.png" alt=""></ng-template>  
+        </owl-carousel-o>
+    </mat-card>
+<mat-card class="m2 p2">
+    <div fxLayout="row wrap">
+        <div fxFlex="100">
+            <h4>Please select type of food</h4>
+            <mat-form-field appearance="fill" class="width-100">
+            <mat-label>Favorite food</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100">
+            <span>frequently choose</span>
+            <mat-chip-list aria-label="Fish selection">
+                <mat-chip>Indian</mat-chip>
+                <mat-chip>Chinese</mat-chip>
+                <mat-chip>British</mat-chip>
+                <mat-chip>Thai</mat-chip>
+              </mat-chip-list>          
+        </div>
+    </div>
+</mat-card>
+<mat-card class="m2 p2">
+    <mat-card class="m2">
+        <div fxFlayout="row wrap">
+            <div fxFlex.ms="100" fxFlex="50">
+                <div fxLayout="row wrap">
+                    <div fxFlex.ms="100" fxFlex="50">
+                        <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                    </div>
+                    <div fxFlex.ms="100" fxFlex="50">
+                        <h3>Signature Syteak House</h3>
+                        <p class="fnt-16 clr-666">British, Steak</p>
+                        <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                        <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex.ms="100" fxFlex="50">
+                <div fxLayout="row wrap">
+                    <div fxFlex.ms="100" fxFlex="50">
+                        <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                    </div>
+                    <div fxFlex.ms="100" fxFlex="50">
+                        <h3>Signature Syteak House</h3>
+                        <p class="fnt-16 clr-666">British, Steak</p>
+                        <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                        <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex.ms="100" fxFlex="50">
+                <div fxLayout="row wrap">
+                    <div fxFlex.ms="100" fxFlex="50">
+                        <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                    </div>
+                    <div fxFlex.ms="100" fxFlex="50">
+                        <h3>Signature Syteak House</h3>
+                        <p class="fnt-16 clr-666">British, Steak</p>
+                        <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                        <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</mat-card>
+<mat-card class="m2 p2">
+    <h3>Quick Picks</h3>
+    <mat-tab-group animationDuration="2000ms">
+    <mat-tab label="British">
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Indian">
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix.jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Thai">
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix.jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="m2">
+            <div fxFlayout="row wrap">
+                <div fxFlex.ms="100" fxFlex="50">
+                    <img src="../../../assets/images/Free_Sample_By_Wix.jpg" alt="">
+                </div>
+                <div fxFlex.ms="100" fxFlex="50">
+                    <h3>Signature Syteak House</h3>
+                    <p class="fnt-16 clr-666">British, Steak</p>
+                    <p class="fnt-16 clr-666"><i>U+00A3</i>40 for two</p>
+                    <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                </div>
+            </div>
+        </mat-card>
+    </mat-tab>
+    </mat-tab-group>
+</mat-card>
