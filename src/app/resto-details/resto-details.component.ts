@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { Router } from '@angular/router';
+import { FeedbackModelComponent } from '../feedback-model/feedback-model.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 interface FoodNode {
   name: string;
@@ -13,15 +16,19 @@ const TREE_DATA: FoodNode[] = [
   //   children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
   // },
   {
-    name: 'Vegetables',
+    name: 'Menu',
     children: [
       {
-        name: 'Green',
-        children: [{name: 'Broccoli'}, {name: 'Brussels sprouts'}],
+        name: 'Veg',
+        children: [{name: 'Aloo tikka'}, {name: 'Bhendi ki bhaji'}, {name: 'Kofte'}, {name: 'Palak panner'}],
       },
       {
-        name: 'Orange',
-        children: [{name: 'Pumpkins'}, {name: 'Carrots'}],
+        name: 'Non-veg',
+        children: [{name: 'Chicken tikka massala'},
+         {name: 'Chicken Kemaa masala '},
+         {name: 'Butter chicken '},
+         {name: 'Chicken egg Kemaa masala '}
+        ],
       },
     ],
   },
@@ -59,9 +66,19 @@ export class RestoDetailsComponent implements OnInit {
   );
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-  constructor() { this.dataSource.data = TREE_DATA;}
+  constructor(private router: Router,public dialog: MatDialog) { this.dataSource.data = TREE_DATA;}
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
   ngOnInit(): void {
+  }
+
+  openDialogFeedback(): void {
+    const dialogRef = this.dialog.open(FeedbackModelComponent, {
+      width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

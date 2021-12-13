@@ -1,16 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormComponent } from './form_folder/form/form.component';
-// import { NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// import {MatFormFieldModule} from '@angular/material/form-field';
-// import { MatOptionSelectionChange } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -36,36 +28,23 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { LoginModelComponent } from './login-model/login-model.component';
-import { FeedbackModelComponent } from './feedback-model/feedback-model.component';
-import { RestoDetailsComponent } from './resto-details/resto-details.component';
 import {MatSliderModule} from '@angular/material/slider';
-import { AdminModule } from './admin/admin.module';
-// import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
-// import { AdminModule } from './admin/admin.module';
-// import { AdminRoutingModule } from './admin/admin-routing.module';
-// import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminRoutingModule } from './admin-routing.module';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FormComponent,
-    LoginModelComponent,
-    FeedbackModelComponent,
-    RestoDetailsComponent,
-    // AdminLoginComponent,
-    // AdminDashboardComponent
-    // NgForm
+    AdminDashboardComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
     MatSliderModule,
-    // AdminRoutingModule,
-    AdminModule,
-    AppRoutingModule,
+    AdminRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
     FlexLayoutModule,
@@ -98,10 +77,10 @@ import { AdminModule } from './admin/admin.module';
 
   
   ],
-  entryComponents: [LoginModelComponent,FeedbackModelComponent],
+  entryComponents: [],
   exports: [
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
-export class AppModule { }
+export class AdminModule { }

@@ -7,12 +7,13 @@
 </button>
 </mat-toolbar>
 <div class="">
-    <div  class="m1 p1"fxLayout="row wrap">
-        <button mat-button color="primary">Back</button>
+    <div  class=" p1"fxLayout="row wrap">
+        <button mat-stroked-button color="primary" routerLink="/form"><mat-icon>keyboard_backspace</mat-icon> &nbsp; &nbsp;Back</button>
     </div>
     <div class="" fxLayout="row wrap">
         <mat-card class="m1 p1" fxFlex="100">
             <img class="restoImg" src="../../assets/images/image11.jpg" alt="">
+            <span class="slider-labels">Your favourite restaurants and takeaways</span>
         </mat-card>
         <mat-divider class="mt-1 mb-1" fxFlex="100"></mat-divider>
         <mat-card class="m1 p1" fxFlex="100">
@@ -87,5 +88,9 @@
                 </mat-card>
             </div>
         </mat-card>
+    </div>
+    <div  class="p1 mb-5" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <button mat-stroked-button color="primary" routerLink="/form" class="mb-5"><mat-icon>keyboard_backspace</mat-icon> &nbsp; &nbsp;Back</button>
+        <button mat-raised-button color="primary" (click)="openDialogFeedback()">Give us feedback</button>
     </div>
 </div>
