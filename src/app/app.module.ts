@@ -38,6 +38,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LoginModelComponent } from './login-model/login-model.component';
 import { FeedbackModelComponent } from './feedback-model/feedback-model.component';
+import { RestoDetailsComponent } from './resto-details/resto-details.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 
@@ -48,10 +50,12 @@ import { FeedbackModelComponent } from './feedback-model/feedback-model.componen
     FormComponent,
     LoginModelComponent,
     FeedbackModelComponent,
+    RestoDetailsComponent,
     // NgForm
   ],
   imports: [
     BrowserModule,
+    MatSliderModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule,

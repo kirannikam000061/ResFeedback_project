@@ -3,7 +3,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { LoginModelComponent } from 'src/app/login-model/login-model.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FeedbackModelComponent } from 'src/app/feedback-model/feedback-model.component';
-
+import { Router } from '@angular/router';
 
 interface Food {
   value: string;
@@ -59,7 +59,7 @@ export class FormComponent implements OnInit {
     },
     nav: true
   }
-  constructor(public dialog: MatDialog) { }
+  constructor(private router: Router,public dialog: MatDialog) { }
 
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},

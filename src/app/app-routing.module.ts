@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './form_folder/form/form.component';
+import { RestoDetailsComponent } from './resto-details/resto-details.component';
 
 const routes: Routes = [
   // {
@@ -10,6 +11,10 @@ const routes: Routes = [
   {
     path: 'form',
     component: FormComponent,
+  },
+  {
+    path: 'details',
+    component: RestoDetailsComponent,
   }
 ];
 
