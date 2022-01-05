@@ -32,6 +32,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { RestOnBoardComponent } from './rest-on-board/rest-on-board.component';
+import { AdminReviewComponent } from './admin-review/admin-review.component';
 
 
 
@@ -39,7 +41,9 @@ import { AdminRoutingModule } from './admin-routing.module';
 @NgModule({
   declarations: [
     AdminDashboardComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    RestOnBoardComponent,
+    AdminReviewComponent
   ],
   imports: [
     BrowserModule,

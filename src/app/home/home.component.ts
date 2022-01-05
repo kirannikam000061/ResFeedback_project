@@ -11,11 +11,11 @@ interface Food {
 }
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class FormComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginModelComponent, {

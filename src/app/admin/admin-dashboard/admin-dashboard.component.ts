@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -26,7 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class AdminDashboardComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'Reviews'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

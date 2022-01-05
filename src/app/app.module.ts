@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormComponent } from './form_folder/form/form.component';
 // import { NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -41,6 +40,7 @@ import { FeedbackModelComponent } from './feedback-model/feedback-model.componen
 import { RestoDetailsComponent } from './resto-details/resto-details.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { AdminModule } from './admin/admin.module';
+import { HomeComponent } from './home/home.component';
 // import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 // import { AdminModule } from './admin/admin.module';
 // import { AdminRoutingModule } from './admin/admin-routing.module';
@@ -52,7 +52,7 @@ import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
+    HomeComponent,
     LoginModelComponent,
     FeedbackModelComponent,
     RestoDetailsComponent,

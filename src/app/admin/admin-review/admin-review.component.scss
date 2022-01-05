@@ -1,0 +1,33 @@
+.overal_rating.new--rating {
+    background: url(../../../assets/images/star-Deactive20px.svg) 0 0 repeat-x;
+    width: 76px;
+    height: 15px;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.overal_rating.new--rating .r_progress {
+    background: url(../../../assets/images/star-Active20px.svg) 0 0 repeat-x;
+    height: 15px;
+    background-size: contain;
+}
+.overal_rating .r_progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.cross-button {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    border-radius: 50%;
+    border: 1px solid #3f51b5;
+    background: #fff;
+}
+.back-buutons{
+    background: #fff;
+    width: 40px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
