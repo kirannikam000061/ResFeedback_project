@@ -4,6 +4,10 @@ import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import { Router } from '@angular/router';
 import { FeedbackModelComponent } from '../feedback-model/feedback-model.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+// import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+
+// import { StarRatingComponent } from 'ng-starrating';
 
 interface FoodNode {
   name: string;
@@ -45,6 +49,20 @@ interface ExampleFlatNode {
   styleUrls: ['./resto-details.component.scss']
 })
 export class RestoDetailsComponent implements OnInit {
+  rating = 0;
+  starCount = 5;
+  ratingArr : boolean[] = []; // true = solid star; false = empty star
+
+  snackBarDuration = 1500;
+  response = [
+    'You broke my heart!',
+    'Really?',
+    'We will do better next time.',
+    'Glad you like it!',
+    'Thank you so much!'
+  ]
+
+
   private _transformer = (node: FoodNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -66,7 +84,10 @@ export class RestoDetailsComponent implements OnInit {
   );
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-  constructor(private router: Router,public dialog: MatDialog) { this.dataSource.data = TREE_DATA;}
+  constructor(private router: Router,public dialog: MatDialog, private _snackBar: MatSnackBar) { 
+
+    this.dataSource.data = TREE_DATA;
+  }
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
   ngOnInit(): void {
   }
@@ -80,5 +101,4 @@ export class RestoDetailsComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-
 }

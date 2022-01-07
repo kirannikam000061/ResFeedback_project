@@ -31,6 +31,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 import {MatTreeModule} from '@angular/material/tree';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
@@ -41,6 +43,8 @@ import { RestoDetailsComponent } from './resto-details/resto-details.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { AdminModule } from './admin/admin.module';
 import { HomeComponent } from './home/home.component';
+import { RatingModule } from 'ng-starrating';
+import { FooterComponent } from './footer/footer.component';
 // import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 // import { AdminModule } from './admin/admin.module';
 // import { AdminRoutingModule } from './admin/admin-routing.module';
@@ -56,13 +60,16 @@ import { HomeComponent } from './home/home.component';
     LoginModelComponent,
     FeedbackModelComponent,
     RestoDetailsComponent,
+    FooterComponent,
     // AdminLoginComponent,
     // AdminDashboardComponent
     // NgForm
   ],
   imports: [
+    RatingModule,
     BrowserModule,
     MatSliderModule,
+    MatSnackBarModule,
     // AdminRoutingModule,
     AdminModule,
     AppRoutingModule,

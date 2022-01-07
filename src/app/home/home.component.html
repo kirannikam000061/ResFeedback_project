@@ -1,5 +1,5 @@
 <mat-toolbar class="navLogo" color="primary">
-        <img class="restoImage"  src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+        <img class="restoImage" routerLink="/home" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
     
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="openDialog()">
@@ -10,12 +10,21 @@
     <div class="" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="1200px"  fxFlex.xl="1200px">
         <mat-card class="m2 p2">
             <owl-carousel-o [options]="customOptions">
-            <ng-template carouselSlide><img src="../../../assets/images/image11.jpg" alt=""><span class="slider-labels">Your favourite restaurants and takeaways</span></ng-template>  
-            <ng-template carouselSlide><img src="../../../assets/images/image11.jpg" alt=""><span class="slider-labels">Give us Review</span></ng-template>  
-            <ng-template carouselSlide><img src="../../../assets/images/image11.jpg" alt=""><span class="slider-labels">multi cuisine restaurant</span></ng-template>  
-            <ng-template carouselSlide><img src="../../../assets/images/Screenshot_3.png" alt=""><span class="slider-labels">multi cuisine restaurant</span></ng-template>  
-            <ng-template carouselSlide><img src="../../../assets/images/Screenshot_3.png" alt=""><span class="slider-labels">multi cuisine restaurant</span></ng-template>  
-            <ng-template carouselSlide><img src="../../../assets/images/Screenshot_3.png" alt=""><span class="slider-labels">multi cuisine restaurant</span></ng-template>  
+            <ng-template carouselSlide>
+                <div class="slider1">
+                    <span class="slider-labels">Discover over range of multicuisine restaurants</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="slider2">
+                    <span class="slider-labels">We are connected with all of finest restaurants</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="slider3">
+                    <span class="slider-labels">Give us the review after visiting there</span>
+                </div>
+            </ng-template>
             </owl-carousel-o>
         </mat-card>
         <mat-card class="m2 p2">
@@ -35,7 +44,6 @@
                     <h3 class="mb-1">Frequently chosen</h3>
                     <mat-chip-list aria-label="Fish selection">
                         <mat-chip>Indian</mat-chip>
-                        <mat-chip>Chinese</mat-chip>
                         <mat-chip>British</mat-chip>
                         <mat-chip>Thai</mat-chip>
                       </mat-chip-list>          
@@ -276,3 +284,7 @@
         </mat-card>
     </div>
 </div>
+    <button mat-raised-button color="primary" class="button-to-top" *ngIf="isShow" (click)="gotoTop()">
+        <mat-icon>arrow_upward</mat-icon>
+    </button>
+<app-footer></app-footer>
