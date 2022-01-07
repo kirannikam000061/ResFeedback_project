@@ -1,0 +1,29 @@
+.restoImg{
+    width: 100%;
+}
+.overal_rating.new--rating {
+    background: url(../../assets/images/star-Deactive20px.svg) 0 0 repeat-x;
+    width: 76px;
+    height: 15px;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.overal_rating.new--rating .r_progress {
+    background: url(../../assets/images/star-Active20px.svg) 0 0 repeat-x;
+    height: 15px;
+    background-size: contain;
+}
+.overal_rating .r_progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.slider-labels{
+    position: relative;
+    top: -320px;
+    color: #fff;
+    font-size: 45px;
+    left: 200px;
+}

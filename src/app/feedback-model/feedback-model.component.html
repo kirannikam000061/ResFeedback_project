@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Give us Feedback</h1>
+<div mat-dialog-content>
+    <div fxLayout="row wrap">
+        <div fxFlex="100" class="mb-3">
+            <button mat-icon-button color="accent" *ngFor="let r of ratingArr; index as i" (click)="onClick(i)">
+                <mat-icon class="clr--yellow">{{ returnStar(i)}}</mat-icon>
+            </button>
+        </div>
+        <div fxFlex="100">
+            <mat-form-field appearance="outline" class="width-100">
+                <mat-label>Give us Feedback</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..." maxlength="100"></textarea>
+              </mat-form-field>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions fxLayoutAlign="center center">
+    <button mat-raised-button color="primary"  (click)="onNoClick()">Submit</button>
+</div>

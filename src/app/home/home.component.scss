@@ -1,0 +1,109 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.navLogo{
+    img{
+        width: 60px;
+        max-height: 80px;
+    }
+}
+
+.p1{
+    padding: 10px;
+}
+.p2{
+    padding: 20px;
+}
+.p3{
+    padding: 30px;
+}
+.p4{
+    padding: 40px;
+}
+.m1{
+    margin: 10px;
+}
+.m2{
+    margin: 20px;
+}
+.m3{
+    margin: 30px;
+}
+.m4{
+    margin: 40px;
+}
+.mt-1{
+    margin-top: 10px;
+}
+.mt-2{
+    margin-top: 20px;
+}
+.mb-1{
+    margin-bottom: 10px;
+}
+.mb-2{
+    margin-bottom: 20px;
+}
+.fnt-18{
+    font-size: 18px;
+}
+.fnt-16{
+    font-size: 16px;
+}
+.fnt-14{
+    font-size: 14px;
+}
+.fnt-12{
+    font-size: 12px;
+}
+.clr-666{
+    color: #666;
+}
+.width-100{
+    width: 100%;
+}
+.restoImage{
+    max-height: 200px;
+    max-width: 200px;
+}
+.slider1,.slider3{
+    background-image: url(../../assets/images/bg1.png);
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slider2{
+    background-image: url(../../assets/images/bg2.png);
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+.slider-labels{
+    position: relative;
+    color: #fff;
+    font-size: 45px;
+    text-align: center;
+}
+.button-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+  }
+@media (min-width:320px) and (max-width:768px) {
+    .slider-labels{
+        font-size: 18px;
+    }
+    .slider1,.slider3,.slider2{
+        height: 230px;
+    }
+}

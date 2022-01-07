@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormComponent } from './form_folder/form/form.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { HomeComponent } from './home/home.component';
+import { RestoDetailsComponent } from './resto-details/resto-details.component';
 
 const routes: Routes = [
   // {
@@ -8,8 +11,20 @@ const routes: Routes = [
   //   component: FormComponent,
   // },
   {
-    path: 'form',
-    component: FormComponent,
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'details',
+    component: RestoDetailsComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminLoginComponent,
+  },
+  {
+    path: 'admin/dashboard',
+    component: AdminDashboardComponent,
   }
 ];
 

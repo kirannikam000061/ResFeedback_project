@@ -1,15 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// import {MatFormFieldModule} from '@angular/material/form-field';
-// import { MatOptionSelectionChange } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -31,48 +24,31 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-
 import {MatTreeModule} from '@angular/material/tree';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { LoginModelComponent } from './login-model/login-model.component';
-import { FeedbackModelComponent } from './feedback-model/feedback-model.component';
-import { RestoDetailsComponent } from './resto-details/resto-details.component';
 import {MatSliderModule} from '@angular/material/slider';
-import { AdminModule } from './admin/admin.module';
-import { HomeComponent } from './home/home.component';
-import { RatingModule } from 'ng-starrating';
-import { FooterComponent } from './footer/footer.component';
-// import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
-// import { AdminModule } from './admin/admin.module';
-// import { AdminRoutingModule } from './admin/admin-routing.module';
-// import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminRoutingModule } from './admin-routing.module';
+import { RestOnBoardComponent } from './rest-on-board/rest-on-board.component';
+import { AdminReviewComponent } from './admin-review/admin-review.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginModelComponent,
-    FeedbackModelComponent,
-    RestoDetailsComponent,
-    FooterComponent,
-    // AdminLoginComponent,
-    // AdminDashboardComponent
-    // NgForm
+    AdminDashboardComponent,
+    AdminLoginComponent,
+    RestOnBoardComponent,
+    AdminReviewComponent
   ],
   imports: [
-    RatingModule,
     BrowserModule,
     MatSliderModule,
-    MatSnackBarModule,
-    // AdminRoutingModule,
-    AdminModule,
-    AppRoutingModule,
+    AdminRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
     FlexLayoutModule,
@@ -105,10 +81,10 @@ import { FooterComponent } from './footer/footer.component';
 
   
   ],
-  entryComponents: [LoginModelComponent,FeedbackModelComponent],
+  entryComponents: [],
   exports: [
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
-export class AppModule { }
+export class AdminModule { }
