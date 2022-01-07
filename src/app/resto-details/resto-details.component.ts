@@ -6,6 +6,7 @@ import { FeedbackModelComponent } from '../feedback-model/feedback-model.compone
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginModelComponent } from '../login-model/login-model.component';
 
 // import { StarRatingComponent } from 'ng-starrating';
 
@@ -94,7 +95,16 @@ export class RestoDetailsComponent implements OnInit {
 
   openDialogFeedback(): void {
     const dialogRef = this.dialog.open(FeedbackModelComponent, {
-      width: '300px'
+      maxWidth: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  openDialogLogin(): void {
+    const dialogRef = this.dialog.open(LoginModelComponent, {
+      maxWidth: '350px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

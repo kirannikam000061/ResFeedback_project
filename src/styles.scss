@@ -43,7 +43,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-top: 20px;
 }
 .mt-3{
-    margin-top: 30px;
+    margin-top: 30px !important;
 }
 .mt-4{
     margin-top: 40px;
@@ -88,7 +88,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-bottom: 20px;
 }
 .mb-3{
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
 }
 .mb-4{
     margin-bottom: 40px;
@@ -135,4 +135,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-snack-bar-container{
     background: #3f51b5;
     color: #fff;
+}
+.mat-table thead{
+    background-color: #3f51b5;
+}
+th.mat-header-cell{
+    color: #fff;
+    font-size: 18px;
 }

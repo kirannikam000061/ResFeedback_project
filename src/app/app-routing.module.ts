@@ -6,12 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { RestoDetailsComponent } from './resto-details/resto-details.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'form',
-  //   component: FormComponent,
-  // },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
   },
   {

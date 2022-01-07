@@ -5,7 +5,12 @@ export interface PeriodicElement {
   name: string;
   position: number;
   Reviews: number;
-  // symbol: string;
+}
+export interface PeriodicElementuser {
+  userName: string;
+  no: number;
+  email: string;
+  password: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -20,6 +25,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 9, name: 'Fluorine', Reviews: 3},
   {position: 10, name: 'Neon', Reviews: 20},
 ];
+const ELEMENT_DATA_User: PeriodicElementuser[] = [
+  {no: 1, email: 'kiran@gmail.com', userName: 'kiran Nikam', password: 'kiran'},
+  {no: 1, email: 'kiran@gmail.com', userName: 'kiran Nikam', password: 'kiran'},
+  {no: 1, email: 'kiran@gmail.com', userName: 'kiran Nikam', password: 'kiran'},
+  {no: 1, email: 'kiran@gmail.com', userName: 'kiran Nikam', password: 'kiran'},
+];
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -27,7 +38,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AdminDashboardComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'Reviews'];
+  displayedColumnsUsers: string[] = ['no', 'email', 'userName', 'password'];
   dataSource = ELEMENT_DATA;
+  dataSourceUser = ELEMENT_DATA_User;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
