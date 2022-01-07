@@ -16,6 +16,7 @@ interface Food {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public searchResults :boolean = false;
   public isShow:boolean = false;
   topPosToStartShowing = 100;
   openDialog(): void {
@@ -65,9 +66,11 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,public dialog: MatDialog) { }
 
   foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
+    {value: 'veg-3', viewValue: 'Veg Restaurents'},
+    {value: 'non-veg-4', viewValue: 'Non-Veg Restaurents'},
+    {value: 'Indian-0', viewValue: 'Indian'},
+    {value: 'Thai-1', viewValue: 'Thai'},
+    {value: 'British-2', viewValue: 'British'}
   ];
   ngOnInit(): void {
   }
@@ -97,5 +100,9 @@ export class HomeComponent implements OnInit {
       left: 0, 
       behavior: 'smooth' 
     });
+  }
+
+  togglesearchResults() {
+    this.searchResults = !this.searchResults;
   }
 }
