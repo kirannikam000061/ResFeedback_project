@@ -45,10 +45,11 @@ import { AdminModule } from './admin/admin.module';
 import { HomeComponent } from './home/home.component';
 import { RatingModule } from 'ng-starrating';
 import { FooterComponent } from './footer/footer.component';
-// import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
-// import { AdminModule } from './admin/admin.module';
-// import { AdminRoutingModule } from './admin/admin-routing.module';
-// import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -61,11 +62,16 @@ import { FooterComponent } from './footer/footer.component';
     FeedbackModelComponent,
     RestoDetailsComponent,
     FooterComponent,
+    LoginComponent,
+    RegisterComponent,
     // AdminLoginComponent,
     // AdminDashboardComponent
     // NgForm
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RatingModule,
     BrowserModule,
     MatSliderModule,
@@ -108,7 +114,7 @@ import { FooterComponent } from './footer/footer.component';
   entryComponents: [LoginModelComponent,FeedbackModelComponent],
   exports: [
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
