@@ -29,6 +29,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatSliderModule} from '@angular/material/slider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -50,6 +51,7 @@ import { AdminReviewComponent } from './admin-review/admin-review.component';
     MatSliderModule,
     AdminRoutingModule,
     BrowserAnimationsModule,
+    FormsModule, ReactiveFormsModule,
     RouterModule,
     FlexLayoutModule,
     MatFormFieldModule,

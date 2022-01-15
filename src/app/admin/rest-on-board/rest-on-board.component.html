@@ -10,87 +10,90 @@
                 <button mat-stroked-button color="primary" routerLink="/admin/dashboard"><mat-icon>keyboard_backspace</mat-icon> &nbsp; &nbsp;Back</button>
             </div>
             <form action="">
-                <h1>Restaurant on Boarding</h1>
-                <div fxLayout="row wrap">
-                    <div fxFlex="100">
-                        <mat-form-field appearance="outline" class="width-100">
-                            <mat-label>Restaurant Name</mat-label>
-                            <input type="text" matInput >
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="100">
-                        <mat-form-field appearance="outline" class="width-100">
-                            <mat-label>Cost for Two people</mat-label>
-                            <input type="text" matInput >
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="100">
-                        <mat-form-field appearance="outline" class="width-100">
-                            <mat-label>Location</mat-label>
-                            <input type="text" matInput >
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.xl="50" fxFlex.lg="50">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Restaurant Cuisine</mat-label>
-                            <mat-select>
-                                <mat-option *ngFor="let cuisine of cuisines" [value]="cuisine.value">
-                                {{cuisine.viewValue}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.xl="50" fxFlex.lg="50" fxFlexAlign="center">
-                        <label for="avatar">Choose profile picture: </label>
-                        <input type="file" id="avatar" class="ml-2 mr-2" name="avatar"accept="image/png, image/jpeg">
-                    </div>
-                    <div fxFlex="100">
-                        <h2 class="mt-3">Food Menu</h2>
-                        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                            <div fxFlex="100">
-                                <h4>Veg Menu options</h4>
+                <h1>Restaurant On-boarding</h1>
+                <form [formGroup]="restoForm">
+                    <div fxLayout="row wrap">
+                        <div fxFlex="100">
+                            <mat-form-field appearance="outline" class="width-100">
+                                <mat-label>Restaurant Name</mat-label>
+                                <input type="text" matInput name="name" formControlName="name">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100">
+                            <mat-form-field appearance="outline" class="width-100">
+                                <mat-label>Cost for Two people</mat-label>
+                                <input type="number" matInput name="cost2" formControlName="cost2">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100">
+                            <mat-form-field appearance="outline" class="width-100">
+                                <mat-label>Location</mat-label>
+                                <input type="text" matInput name="location" formControlName="location">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.xl="50" fxFlex.lg="50">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Restaurant Cuisine</mat-label>
+                                <mat-select name="cuisine" formControlName="cuisine">
+                                    <mat-option *ngFor="let cuisine of cuisines" [value]="cuisine.value">
+                                    {{cuisine.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.xl="50" fxFlex.lg="50" fxFlexAlign="center">
+                            <label for="avatar">Choose profile picture: </label>
+                            <input type="file" id="restoPic" class="ml-2 mr-2" name="restoPic" formControlName="restoPic" name="avatar" accept="image/png, image/jpeg">
+                        </div>
+                        <div fxFlex="100">
+                            <h2 class="mt-3">Food Menu</h2>
+                            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                                <div fxFlex="100">
+                                    <h4>Veg Menu options</h4>
+                                </div>
+                                <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
+                                    <mat-form-field appearance="outline" class="width-100">
+                                        <input type="text" matInput placeholder="Veg option 1" name="veg1" formControlName="veg1">
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
+                                    <mat-form-field appearance="outline" class="width-100">
+                                        <input type="text" matInput placeholder="Veg option 2" name="veg2" formControlName="veg2">
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
+                                    <mat-form-field appearance="outline" class="width-100">
+                                        <input type="text" matInput placeholder="Veg option 3" name="veg3" formControlName="veg3">
+                                    </mat-form-field>
+                                </div>
                             </div>
-                            <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
-                                <mat-form-field appearance="outline" class="width-100">
-                                    <input type="text" matInput placeholder="Veg option 1">
-                                </mat-form-field>
-                            </div>
-                            <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
-                                <mat-form-field appearance="outline" class="width-100">
-                                    <input type="text" matInput placeholder="Veg option 2">
-                                </mat-form-field>
-                            </div>
-                            <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
-                                <mat-form-field appearance="outline" class="width-100">
-                                    <input type="text" matInput placeholder="Veg option 3">
-                                </mat-form-field>
+                            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                                <div fxFlex="100">
+                                    <h4>Non-Veg Menu options</h4>
+                                </div>
+                                <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
+                                    <mat-form-field appearance="outline" class="width-100">
+                                        <input type="text" matInput placeholder="Non-Veg option 1" name="nonveg1" formControlName="nonveg1">
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
+                                    <mat-form-field appearance="outline" class="width-100">
+                                        <input type="text" matInput placeholder="Non-Veg option 2" name="nonveg2" formControlName="nonveg2">
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
+                                    <mat-form-field appearance="outline" class="width-100">
+                                        <input type="text" matInput placeholder="Non-Veg option 3" name="nonveg3" formControlName="nonveg3">
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
-                        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                            <div fxFlex="100">
-                                <h4>Non-Veg Menu options</h4>
-                            </div>
-                            <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
-                                <mat-form-field appearance="outline" class="width-100">
-                                    <input type="text" matInput placeholder="Non-Veg option 1">
-                                </mat-form-field>
-                            </div>
-                            <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
-                                <mat-form-field appearance="outline" class="width-100">
-                                    <input type="text" matInput placeholder="Non-Veg option 2">
-                                </mat-form-field>
-                            </div>
-                            <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="45" fxFlex.md="30" fxFlex.xl="30">
-                                <mat-form-field appearance="outline" class="width-100">
-                                    <input type="text" matInput placeholder="Non-Veg option 3">
-                                </mat-form-field>
-                            </div>
+                        <div fxFlex="100" class="mb-3">
+                                <button mat-raised-button color="primary" [disabled]="restoForm.invalid" (click)="saveResto()">Submit</button>
                         </div>
                     </div>
-                    <div fxFlex="100" class="mb-3">
-                            <button mat-raised-button color="primary" type="submit">Submit</button>
-                    </div>
-                </div>
+                </form>
+
             </form>
         </mat-card>
     </div>

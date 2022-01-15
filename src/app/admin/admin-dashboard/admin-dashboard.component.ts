@@ -41,9 +41,14 @@ export class AdminDashboardComponent implements OnInit {
   displayedColumnsUsers: string[] = ['no', 'email', 'userName', 'password'];
   dataSource = ELEMENT_DATA;
   dataSourceUser = ELEMENT_DATA_User;
+
+  adminId: any = localStorage.getItem("adminId")
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if(!this.adminId) {
+      this.router.navigate(["/" , "admin"])
+    }
   }
 
 }

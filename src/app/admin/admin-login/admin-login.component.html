@@ -2,22 +2,26 @@
     <div fxFlex="100" class="hight-500 bg-login" fxLayoutAlign="center center">
         <div class="adminLogin-main">
             <h1>Admin Login</h1>
-            <div fxLayout="row wrap">
-                <div fxFlex="100">
-                    <mat-form-field appearance="outline" class="width-100">
-                        <mat-label>User Name</mat-label>
-                        <input type="text" matInput >
-                    </mat-form-field>
+            <form [formGroup]="loginForm">
+
+                <div fxLayout="row wrap">
+                    <div fxFlex="100">
+                        <mat-form-field appearance="outline" class="width-100">
+                            <mat-label>Email Id</mat-label>
+                            <input type="text" matInput name="email" formControlName="email">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100">
+                        <mat-form-field appearance="outline" class="width-100">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput name="password" formControlName="password">
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div fxFlex="100">
-                    <mat-form-field appearance="outline" class="width-100">
-                        <mat-label>Password</mat-label>
-                        <input type="password" matInput >
-                    </mat-form-field>
-                </div>
-            </div>
+            </form>
+                
             <div fxLayoutAlign="center center">
-                <button mat-raised-button color="primary" routerLink="/admin/dashboard">Submit</button>
+                <button mat-raised-button color="primary" disabled="loginForm.invalid" (click)="login()">Submit</button>
             </div>
         </div>
     </div>

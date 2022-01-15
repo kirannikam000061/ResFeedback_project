@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("userDetails", JSON.stringify(user))
         this._router.navigate(['/'])
       } else {
-        alert("Something went wrong!")
+        alert("Please enter correct credentials!")
       }
     }, (err) => {
       console.log("err ==> ", err)
