@@ -9,11 +9,11 @@
         <div fxFlex="100">
             <mat-form-field appearance="outline" class="width-100">
                 <mat-label>Give us Feedback</mat-label>
-                <textarea matInput placeholder="Ex. It makes me feel..." maxlength="100"></textarea>
-              </mat-form-field>
+                <textarea matInput [(ngModel)]="review" placeholder="Ex. It makes me feel..." maxlength="100"></textarea>
+            </mat-form-field>
         </div>
     </div>
 </div>
 <div mat-dialog-actions fxLayoutAlign="center center">
-    <button mat-raised-button color="primary"  (click)="onNoClick()">Submit</button>
+    <button mat-raised-button color="primary" [disabled]="review == '' || rating == 0" (click)="giveFeedback()">Submit</button>
 </div>

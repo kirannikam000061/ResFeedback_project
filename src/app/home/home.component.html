@@ -37,80 +37,40 @@
         </mat-card>
         <mat-card class="m2 p2">
             <div fxLayout="row wrap">
-                <div fxFlex="100">
+                <div fxFlex="50" fxFlex.xs="100">
                     <h4>Cuisine or Veg/Non-veg</h4>
                     <mat-form-field appearance="fill" class="width-100">
                     <mat-label>Food Options</mat-label>
-                    <mat-select>
+                    <mat-select (selectionChange)="filterRecords()" [(ngModel)]="foodType">
                         <mat-option *ngFor="let food of foods" [value]="food.value">
                         {{food.viewValue}}
                         </mat-option>
                     </mat-select>
                     </mat-form-field>
                 </div>
-                <div fxFlex="100">
-                    <h3 class="mb-1 mt-3">Frequently Chosen Cuisines</h3>
-                    <mat-chip-list aria-label="Fish selection">
-                        <mat-chip (click)="togglesearchResults()" >Indian</mat-chip>
-                        <mat-chip (click)="togglesearchResults()" >British</mat-chip>
-                        <mat-chip (click)="togglesearchResults()" >Thai</mat-chip>
+                <div fxFlex="48" fxFlex.xs="100" style="padding-left: 30px">
+                    <h3 class="mb-1 ml-2">Frequently Chosen Cuisines</h3>
+                    <mat-chip-list aria-label="Cuisines selection">
+                        <mat-chip (click)="selectCuisine('indian-0')" >Indian</mat-chip>
+                        <mat-chip (click)="selectCuisine('british-2')" >British</mat-chip>
+                        <mat-chip (click)="selectCuisine('thai-1')" >Thai</mat-chip>
                       </mat-chip-list>          
                 </div>
             </div>
         </mat-card>
         <mat-card class="m2 p2" *ngIf="searchResults">
-            <h3>Here are some of search resultes </h3>
+            <h3>Here are some of search results </h3>
             <mat-card class="m2">
                 <div fxLayout="row wrap">
-                    <div fxFlex.xs="100" fxFlex="50">
+                    <div fxFlex.xs="100" fxFlex="50" *ngFor="let resto of restoList">
                         <div fxLayout="row wrap">
                             <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                                <img class="restoImage" [routerLink]="['/' , 'details', resto._id ]" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
                             </div>
                             <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div fxFlex.xs="100" fxFlex="50">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666">&#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div fxFlex.xs="100" fxFlex="50">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666">&#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div fxFlex.xs="100" fxFlex="50">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666">&#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                                <h3>{{resto.name}}</h3>
+                                <p class="fnt-16 clr-666"> &#163; {{resto.cost2}} for two</p>
+                                <p class="fnt-16 clr-666">{{resto.location}}</p>
                             </div>
                         </div>
                     </div>
@@ -122,55 +82,16 @@
             <mat-tab-group animationDuration="2000ms">
             <mat-tab label="British">
                 <div class="mt-1" fxLayout="row wrap" fxLayoutGap.xs="0%" fxLayoutGap="2%">
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
+                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1" *ngFor="let resto of britishRestoList">
                         <div fxLayout="row wrap">
                             <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                                <img class="restoImage" [routerLink]="['/' , 'details', resto._id ]" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
                             </div>
                             <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
+                                <h3>{{resto.name}}</h3>
                                 
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                                <p class="fnt-16 clr-666"> &#163; {{resto.cost2}} for two</p>
+                                <p class="fnt-16 clr-666">{{resto.location}}</p>
                             </div>
                         </div>
                     </mat-card>
@@ -178,55 +99,16 @@
             </mat-tab>
             <mat-tab label="Indian">
                 <div class="mt-1" fxLayout="row wrap" fxLayoutGap.xs="0%" fxLayoutGap="2%">
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
+                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1" *ngFor="let resto of indianRestoList">
                         <div fxLayout="row wrap">
                             <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix.jpg" alt="">
+                                <img class="restoImage" [routerLink]="['/' , 'details', resto._id ]" src="../../../assets/images/Free_Sample_By_Wix.jpg" alt="">
                             </div>
                             <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
+                                <h3>{{resto.name}}</h3>
                                 
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                                <p class="fnt-16 clr-666"> &#163; {{resto.cost2}} for two</p>
+                                <p class="fnt-16 clr-666">{{resto.location}}</p>
                             </div>
                         </div>
                     </mat-card>
@@ -234,58 +116,20 @@
             </mat-tab>
             <mat-tab label="Thai">
                 <div class="mt-1" fxLayout="row wrap" fxLayoutGap.xs="0%" fxLayoutGap="2%">
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
+                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1"  *ngFor="let resto of thaiRestoList">
                         <div fxLayout="row wrap">
                             <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
+                                <img class="restoImage" [routerLink]="['/' , 'details', resto._id ]" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
                             </div>
                             <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
+                                <h3>{{resto.name}}</h3>
                                 
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                                <p class="fnt-16 clr-666"> &#163; {{resto.cost2}} for two</p>
+                                <p class="fnt-16 clr-666">{{resto.location}}</p>
                             </div>
                         </div>
                     </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix.jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card fxFlex.xs="100" fxFlex="48" class="mb-1">
-                        <div fxLayout="row wrap">
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <img class="restoImage" routerLink="/details" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
-                            </div>
-                            <div fxFlex.xs="100" fxFlex="50">
-                                <h3>Signature Syteak House</h3>
-                                
-                                <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                                <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
-                            </div>
-                        </div>
-                    </mat-card>
+                    
                 </div>
             </mat-tab>
             </mat-tab-group>

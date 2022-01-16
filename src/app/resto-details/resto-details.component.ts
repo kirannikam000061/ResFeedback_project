@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { FlatTreeControl} from '@angular/cdk/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Router } from '@angular/router';
 import { FeedbackModelComponent } from '../feedback-model/feedback-model.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-// import { MatSnackBar } from '@angular/material/snack-bar';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-import { LoginModelComponent } from '../login-model/login-model.component';
+import { MatDialog } from '@angular/material/dialog';
+import { APIService } from '../api.service';
 
 // import { StarRatingComponent } from 'ng-starrating';
 
@@ -16,10 +14,6 @@ interface FoodNode {
 }
 
 const TREE_DATA: FoodNode[] = [
-  // {
-  //   name: 'Fruit',
-  //   children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
-  // },
   {
     name: 'Menu',
     children: [
@@ -50,20 +44,10 @@ interface ExampleFlatNode {
   styleUrls: ['./resto-details.component.scss']
 })
 export class RestoDetailsComponent implements OnInit {
-  rating = 0;
-  starCount = 5;
-  ratingArr : boolean[] = []; // true = solid star; false = empty star
-
-  snackBarDuration = 1500;
-  response = [
-    'You broke my heart!',
-    'Really?',
-    'We will do better next time.',
-    'Glad you like it!',
-    'Thank you so much!'
-  ]
-
-
+  userId: any = localStorage.getItem("userId")
+  userDetails: any = localStorage.getItem("userDetails")
+  alreadyReviewed: boolean = false
+  
   private _transformer = (node: FoodNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -85,30 +69,85 @@ export class RestoDetailsComponent implements OnInit {
   );
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-  constructor(private router: Router,public dialog: MatDialog, private _snackBar: MatSnackBar) { 
 
+  restoId: string = ""
+  resto: any = {}
+  reviews: any[] = []
+
+  constructor(private router: Router, public dialog: MatDialog, private api: APIService) { 
     this.dataSource.data = TREE_DATA;
   }
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable
+
   ngOnInit(): void {
+    if(this.userDetails && typeof(this.userDetails) == "string") {
+      this.userDetails = JSON.parse(this.userDetails)
+    }
+    const locArray = location.href.split("/")
+    this.restoId = locArray[locArray.length - 1]
+    if(location.href.indexOf("feedback") > -1) {
+      const idArray = this.restoId.split("?")
+      this.restoId = idArray[0]
+      this.openDialogFeedback()
+    }
+    this.getRestoDetails()
   }
 
+  //function to get resto details
+  getRestoDetails() {
+    let reqParams = { restoId: this.restoId }
+    this.api.apiRequest('post', "resto/details", reqParams).subscribe(result => {
+      console.log("result", result)
+      if(result.status == "success") {
+        this.resto = result.data.restoDetails
+        this.reviews = this.resto.reviews
+        if(this.reviews && this.reviews.length > 0) {
+          this.reviews.map((o:any) => {
+            if(o.reviewById == this.userId) {
+              this.alreadyReviewed = true
+            }
+            o.width = o.rating * 20 + "%"
+          })
+
+        }
+        this.dataSource.data = [
+          {
+            name: 'Menu',
+            children: [
+              {
+                name: 'Veg',
+                children: [{ name: this.resto.veg1 }, { name: this.resto.veg2 }, { name: this.resto.veg3 }],
+              },
+              {
+                name: 'Non-veg',
+                children: [{ name: this.resto.nonveg1 }, { name: this.resto.nonveg2 }, { name: this.resto.nonveg3 }],
+              }
+            ]
+          }
+        ]
+      } else {
+        alert("Could not fetch restaurant details!")
+      }
+    }, (err) => {
+      console.log("err ==> ", err)
+      alert("Something went wrong!")
+    })
+  }
+
+  // funciton to open feedback dialog
   openDialogFeedback(): void {
     const dialogRef = this.dialog.open(FeedbackModelComponent, {
-      maxWidth: '400px'
+      maxWidth: '400px',
+      data: { restoId: this.restoId }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log("result", result)
+      result.review.width = result.review.rating * 20 + '%'
+      this.reviews.push(result.review)
       console.log('The dialog was closed');
-    });
+    })
   }
-  openDialogLogin(): void {
-    const dialogRef = this.dialog.open(LoginModelComponent, {
-      maxWidth: '350px'
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
+  
 }

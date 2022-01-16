@@ -23,6 +23,7 @@
     "@angular/router": "~13.0.0",
     "animate.css": "^4.1.1",
     "express": "^4.17.2",
+    "lodash": "^4.17.21",
     "mongoose": "^6.1.5",
     "ng-starrating": "^1.0.20",
     "ngx-owl-carousel-o": "^7.0.1",

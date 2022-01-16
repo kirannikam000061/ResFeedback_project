@@ -53,7 +53,7 @@ export class RestOnBoardComponent implements OnInit {
     this.api.apiRequest('post', "resto/onboard", reqParams).subscribe(result => {
       console.log("result", result)
       if(result.status == "success") {
-        // this.router.navigate(['/', 'admin', 'dashboard'])
+        this.router.navigate(['/', 'admin', 'dashboard'])
       } else {
         alert("Please enter correct values!")
       }

@@ -15,7 +15,7 @@ const routes: Routes = [
     component: AdminDashboardComponent,
   },
   {
-    path: 'admin/adminReview',
+    path: 'admin/adminReview/:id',
     component: AdminReviewComponent,
   },
   {

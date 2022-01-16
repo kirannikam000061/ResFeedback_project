@@ -1,14 +1,9 @@
 import { Component, OnInit,HostListener } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { LoginModelComponent } from 'src/app/login-model/login-model.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FeedbackModelComponent } from 'src/app/feedback-model/feedback-model.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { cuisines } from '../config'
+import { APIService } from '../api.service';
 
 @Component({
   selector: 'app-home',
@@ -23,26 +18,15 @@ export class HomeComponent implements OnInit {
   userId: any = localStorage.getItem("userId")
   userDetails: any = localStorage.getItem("userDetails")
   
-  openDialog(): void {
-    const dialogRef = this.dialog.open(LoginModelComponent, {
-      width: '300px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
-  openDialogFeedback(): void {
-    const dialogRef = this.dialog.open(FeedbackModelComponent, {
-      width: '300px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
+  foods: any[] = cuisines
+  restoList: any[] = []
+  britishRestoList: any[] = []
+  indianRestoList: any[] = []
+  thaiRestoList: any[] = []
+  allRestoList: any[] = []
+  foodType: string = ""
+  cuisineType: string = ""
+  
   customOptions: OwlOptions = {
     loop: true,
     autoplayHoverPause : true,
@@ -69,33 +53,21 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   }
-  constructor(private router: Router,public dialog: MatDialog) { }
+  constructor(private router: Router,public dialog: MatDialog, private api: APIService) { }
 
-  foods: Food[] = [
-    {value: 'veg-3', viewValue: 'Veg Restaurents'},
-    {value: 'non-veg-4', viewValue: 'Non-Veg Restaurents'},
-    {value: 'Indian-0', viewValue: 'Indian'},
-    {value: 'Thai-1', viewValue: 'Thai'},
-    {value: 'British-2', viewValue: 'British'}
-  ];
 
   ngOnInit(): void {
     if(this.userDetails && typeof(this.userDetails) == "string") {
       this.userDetails = JSON.parse(this.userDetails)
     }
+    this.getResto()
   }
 
 
   @HostListener('window:scroll')
   checkScroll() {
-      
-    // window의 scroll top
-    // Both window.pageYOffset and document.documentElement.scrollTop returns the same result in all the cases. window.pageYOffset is not supported below IE 9.
-
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
     console.log('[scroll]', scrollPosition);
-    
     if (scrollPosition >= this.topPosToStartShowing) {
       this.isShow = true;
     } else {
@@ -103,7 +75,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // TODO: Cross browsing
   gotoTop() {
     window.scroll({ 
       top: 0, 
@@ -112,7 +83,45 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  togglesearchResults() {
-    this.searchResults = !this.searchResults;
+  //function to select cuisine
+  selectCuisine(cuisine: string) {
+    if(this.cuisineType == cuisine) {
+      this.searchResults = false
+      this.cuisineType = ""
+    } else {
+      this.searchResults = true
+      this.cuisineType = cuisine
+    }
+    this.restoList = JSON.parse(JSON.stringify(this.allRestoList))
+    this.restoList = this.restoList.filter((o) => o.cuisine == cuisine)
   }
+
+  //function to get list of resto
+  getResto() {
+    let reqParams = { query: {} }
+    this.api.apiRequest('post', "resto/list", reqParams).subscribe(result => {
+      console.log("result", result)
+      if(result.status == "success") {
+        this.restoList = result.data.restoList
+        this.allRestoList = result.data.restoList
+        this.britishRestoList = result.data.restoList.filter((o:any) => o.cuisine == "british-2")
+        this.indianRestoList = result.data.restoList.filter((o:any) => o.cuisine == "indian-0")
+        this.thaiRestoList = result.data.restoList.filter((o:any) => o.cuisine == "thai-1")
+      } else {
+        alert("Could not fetch resto values!")
+      }
+    }, (err) => {
+      console.log("err ==> ", err)
+      alert("Something went wrong!")
+    })
+  }
+
+  //function to filter records
+  filterRecords() {
+    this.searchResults = true
+    this.cuisineType = ""
+    this.restoList = JSON.parse(JSON.stringify(this.allRestoList))
+    this.restoList = this.restoList.filter((o) => o.cuisine == this.foodType)
+  }
+
 }

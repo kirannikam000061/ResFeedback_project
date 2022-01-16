@@ -1,17 +1,25 @@
 <mat-toolbar class="navLogo" color="primary">
     <img class="restoImage" routerLink="/" src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
 
-<span class="example-spacer"></span> 
-<button mat-icon-button class="example-icon favorite-icon" (click)="openDialogLogin()" aria-label="Example icon-button with heart icon" > <!--(click)="openDialog()  [routerLink]="[form]"" -->
-    <span>Login</span>
-</button>
+<span class="example-spacer"></span>
+<div *ngIf="userDetails">
+    {{userDetails.fullName}}
+</div>
+<div *ngIf="!userDetails">
+    <button mat-icon-button class="example-icon favorite-icon" routerLink="/login">
+        <span>Login</span>
+    </button>
+    <button mat-icon-button class="example-icon favorite-icon" routerLink="/register">
+        <span>Register</span>
+    </button>
+</div>
 </mat-toolbar>
 <div class="" fxLayout="row wrap" fxLayoutAlign="center center">
     <div class="" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="1200px" fxFlex.xl="1200px">
         <div  class=" p1"fxLayout="row wrap">
             <button mat-stroked-button color="primary" routerLink="/"><mat-icon>keyboard_backspace</mat-icon> &nbsp; &nbsp;Back</button>
         </div>
-        <div class="" fxLayout="row wrap">
+        <div class="" fxLayout="row wrap" *ngIf="resto">
             <mat-card class="m1 p1" fxFlex="100">
                 <img class="restoImg" src="../../assets/images/image11.jpg" alt="">
                 <span class="slider-labels">Your favourite restaurants and takeaways</span>
@@ -21,18 +29,13 @@
             <mat-card class="m1 p1" fxFlex="100">
                 <div fxLayout="row wrap">
                     <div fxFlex.xs="100" fxFlex="50">
-                        <h3>Signature Syteak House</h3>
-                        <p class="fnt-16 clr-666"> &#163;40 for two</p>
-                        <p class="fnt-16 clr-666">Stock-on-trent, shelton</p>
+                        <h3>{{resto.name}}</h3>
+                        <p class="fnt-16 clr-666"> &#163; {{resto.cost2}} for two</p>
+                        <p class="fnt-16 clr-666">{{resto.location}}</p>
                     </div>
                     <div fxFlex.xs="100" fxFlex="50">
                         <h3>Food Menu</h3>
                         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-                            <!-- <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-                            <button mat-icon-button disabled></button>
-                            {{node.name}}
-                            </mat-tree-node> -->
-                            <!-- This is the tree node template for expandable nodes -->
                             <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
                             <button mat-icon-button matTreeNodeToggle
                                     [attr.aria-label]="'Toggle ' + node.name">
@@ -46,54 +49,25 @@
                     </div>
                 </div>
             </mat-card>
-            <h1 class="mt-3">Customer Reviews</h1>
-            <mat-card class="m1 p1" fxFlex="100">
+            <h1 class="mt-3" *ngIf="reviews && reviews.length > 0">Customer Reviews</h1>
+            <mat-card class="m1 p1" fxFlex="100" *ngIf="reviews && reviews.length > 0">
                 <div fxLayout="row wrap" fxLayoutGap="2%">
-                    <mat-card fxFlex="30">
-                        <!-- <mat-slider aria-label="unit(s)"></mat-slider>
-                        <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
-                        <mat-slider vertical></mat-slider> -->
-                        <h3>John smith</h3>
+                    <mat-card fxFlex="30" *ngFor="let review of reviews">
+                        <h3>{{review.reviewByName}}</h3>
                         <div class="overal_rating new--rating mb-2">
-                            <div class="r_progress" style="width:80%;"></div>
+                            <div class="r_progress" [ngStyle]="{ 'width' : review.width }"></div>
                         </div>
                         <br>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    </mat-card>
-                    <mat-card fxFlex="30">
-                        <!-- <mat-slider aria-label="unit(s)"></mat-slider>
-                        <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
-                        <mat-slider vertical></mat-slider> -->
-                        <h3>John smith</h3>
-                        <div class="overal_rating new--rating mb-2">
-                            <div class="r_progress" style="width:60%;"></div>
-                        </div>
-                        <br>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    </mat-card>
-                    <mat-card fxFlex="30">
-                        <!-- <mat-slider aria-label="unit(s)"></mat-slider>
-                        <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
-                        <mat-slider vertical></mat-slider> -->
-                        <h3>John smith</h3>
-                        <div class="overal_rating new--rating mb-2">
-                            <div class="r_progress" style="width:40%;"></div>
-                        </div>
-                        <br>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        <p>{{review.review}}</p>
                     </mat-card>
                 </div>
             </mat-card>
         </div>
         <div  class="p1 mb-5" fxLayout="row wrap" fxLayoutAlign="space-between center">
             <button mat-stroked-button color="primary" routerLink="/" class="mb-5"><mat-icon>keyboard_backspace</mat-icon> &nbsp; &nbsp;Back</button>
-            <button mat-raised-button color="primary" (click)="openDialogFeedback()">Give us feedback</button>
+            <button mat-raised-button color="primary" *ngIf="userId && !alreadyReviewed" (click)="openDialogFeedback()">Give us feedback</button>
+            <button mat-raised-button color="primary" *ngIf="userId && alreadyReviewed" (click)="openDialogFeedback()">Give another feedback</button>
+            <button mat-raised-button color="primary" *ngIf="!userId" [routerLink]="['/', 'login']" [queryParams]="{return: restoId}">Give us feedback</button>
         </div>
     </div>
 </div>

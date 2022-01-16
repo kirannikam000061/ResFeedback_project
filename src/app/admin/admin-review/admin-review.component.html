@@ -1,7 +1,7 @@
 <mat-toolbar class="navLogo" color="primary">
     <img class="restoImage"  src="../../../assets/images/Free_Sample_By_Wix (1).jpg" alt="">
 
-<span class="example-spacer"> Admin Restorent Feedbacks</span>
+<span class="example-spacer"> Admin Restaurant Feedback</span>
 </mat-toolbar>
 <div class="mt-5" fxLayout="row wrap" fxLayoutAlign="center center">
     <div class="" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="1200px"  fxFlex.xl="1200px">
@@ -13,21 +13,24 @@
                 </div>
         </div>
         <div fxLayout="row wrap">
-            <h1>Restorent Name and their reviews </h1>
+            <h1>{{resto.name}}</h1>
         </div>
-        <mat-card fxLayout="row wrap" fxLayoutAlign="space-between center">
-            <mat-card fxFlex="40" fxFlex.xs="100" fxFlex.sm="100" *ngFor="let feedback of feedbacks;" class="m3">
-                <div class="mb-2">Customer Name</div>
+        <mat-card fxLayout="row wrap" fxLayoutAlign="space-between center" *ngIf="reviews.length > 0">
+            <mat-card fxFlex="40" fxFlex.xs="100" fxFlex.sm="100" *ngFor="let review of reviews;">
+                <div class="mb-2">{{review.reviewByName}}</div>
                 <div class="cross-button">
-                    <button mat-icon-button color="accent">
+                    <button mat-icon-button color="accent" (click)="deleteReview(review._id)">
                         <mat-icon>close</mat-icon>
                       </button>
                 </div>
                 <div class="overal_rating new--rating mb-2">
-                    <div class="r_progress" style="width:80%;"></div>
+                    <div class="r_progress" [ngStyle]="{ width: review.width } "></div>
                 </div>
-                <h3 class="">{{feedback.review}}</h3>
+                <h3 class="">{{review.review}}</h3>
             </mat-card>
+        </mat-card>
+        <mat-card fxLayout="row wrap" fxLayoutAlign="space-between center" *ngIf="reviews.length == 0">
+            No reviews yet
         </mat-card>
     </div>
 </div>
