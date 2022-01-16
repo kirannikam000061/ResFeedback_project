@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         const user = result.data.userDetails
         localStorage.setItem("userId", user._id)
         localStorage.setItem("userDetails", JSON.stringify(user))
-        if(this.restoId) {
+        if(this.restoId && this.restoId != "") {
           this._router.navigate(['/', 'details', this.restoId], {queryParams: { feedback: true }})
         } else {
           this._router.navigate(['/'])
